@@ -1,0 +1,11 @@
+repositories:
+  - name: operator
+    url:  https://raw.githubusercontent.com/scottd018-demos/openshift-aws-alb/main/openshift/demo-operator/
+
+releases:
+  - name: operator
+    namespace: aws-load-balancer-operator
+    chart: operator
+    set:
+      - name: role_arn
+        value: "arn:aws:iam::660250927410:role/poc-dscott-aws-load-balancer-controller"
