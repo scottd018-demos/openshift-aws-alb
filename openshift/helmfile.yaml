@@ -1,6 +1,6 @@
 repositories:
-  - name: operator
-    url:  https://raw.githubusercontent.com/scottd018-demos/openshift-aws-alb/main/openshift/demo-operator/
+  - name: demo
+    url:  https://raw.githubusercontent.com/scottd018-demos/openshift-aws-alb/main/
 
 releases:
   - name: operator
