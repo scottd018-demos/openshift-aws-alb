@@ -1,4 +1,5 @@
-apiVersion: project.openshift.io/v1
-kind: Project
-metadata:
-  name: aws-load-balancer-operator
+# apiVersion: project.openshift.io/v1
+# kind: Project
+# metadata:
+#   name: aws-load-balancer-operator
+# å
