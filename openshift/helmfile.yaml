@@ -12,3 +12,6 @@ releases:
   - name: controller
     namespace: helm
     chart: demo/demo-controller
+
+helmDefaults:
+  createNamespace: false
