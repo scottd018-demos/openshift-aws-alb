@@ -9,8 +9,8 @@ entries:
     name: demo-operator
     type: application
     urls:
-    - https://raw.githubusercontent.com/scottd018-demos/openshift-aws-alb/main/openshift/demo-operator/charts/demo-operator-0.1.4.tgz
-    version: 0.1.0
+    - https://raw.githubusercontent.com/scottd018-demos/openshift-aws-alb/main/openshift/demo-operator/charts/demo-operator-0.1.5.tgz
+    version: 0.1.5
   demo-controller:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -21,5 +21,5 @@ entries:
     type: application
     urls:
     - https://raw.githubusercontent.com/scottd018-demos/openshift-aws-alb/main/openshift/demo-controller/charts/demo-controller-0.1.1.tgz
-    version: 0.1.0
+    version: 0.1.1
 generated: "2023-03-02T15:38:03.139345-06:00"
