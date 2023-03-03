@@ -4,11 +4,11 @@ repositories:
 
 releases:
   - name: operator
-    namespace: default
+    namespace: helm
     chart: demo/demo-operator
     set:
       - name: role_arn
         value: "arn:aws:iam::660250927410:role/poc-dscott-aws-load-balancer-controller"
   - name: controller
-    namespace: default
+    namespace: helm
     chart: demo/demo-controller
