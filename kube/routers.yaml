@@ -31,7 +31,6 @@ spec:
   replicas: 2
   tuningOptions:
     reloadInterval: 0s
-  unsupportedConfigOverrides: null
 ---
 apiVersion: operator.openshift.io/v1
 kind: IngressController
@@ -66,4 +65,3 @@ spec:
   replicas: 2
   tuningOptions:
     reloadInterval: 0s
-  unsupportedConfigOverrides: null
