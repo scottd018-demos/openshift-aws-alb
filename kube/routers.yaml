@@ -1,0 +1,69 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: router1
+  namespace: openshift-ingress-operator
+spec:
+  namespaceSelector:
+    matchLabels:
+      kubernetes.io/metadata.name: app1
+  routeAdmission:
+    namespaceOwnership: InterNamespaceAllowed
+  clientTLS:
+    clientCA:
+      name: ""
+    clientCertificatePolicy: ""
+  defaultCertificate:
+    name: dscott-router1-cert-bundle-secret
+  domain: apps.dscott.d2do.p1.openshiftapps.com
+  httpCompression: {}
+  httpEmptyRequestsPolicy: Respond
+  httpErrorCodePages:
+    name: ""
+  nodePlacement:
+    nodeSelector:
+      matchLabels:
+        node-role.kubernetes.io/infra: ""
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/infra
+      operator: Exists
+  replicas: 2
+  tuningOptions:
+    reloadInterval: 0s
+  unsupportedConfigOverrides: null
+---
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: router2
+  namespace: openshift-ingress-operator
+spec:
+  namespaceSelector:
+    matchLabels:
+      kubernetes.io/metadata.name: app2
+  routeAdmission:
+    namespaceOwnership: InterNamespaceAllowed
+  clientTLS:
+    clientCA:
+      name: ""
+    clientCertificatePolicy: ""
+  defaultCertificate:
+    name: dscott-router2-cert-bundle-secret
+  domain: apps.dscott.d2do.p1.openshiftapps.com
+  httpCompression: {}
+  httpEmptyRequestsPolicy: Respond
+  httpErrorCodePages:
+    name: ""
+  nodePlacement:
+    nodeSelector:
+      matchLabels:
+        node-role.kubernetes.io/infra: ""
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/infra
+      operator: Exists
+  replicas: 2
+  tuningOptions:
+    reloadInterval: 0s
+  unsupportedConfigOverrides: null

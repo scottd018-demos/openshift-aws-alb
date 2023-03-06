@@ -1,7 +1,17 @@
 apiVersion: networking.olm.openshift.io/v1alpha1
 kind: AWSLoadBalancerController
 metadata:
-  name: cluster
+  name: alb1
 spec:
   credentials:
     name: aws-load-balancer-operator
+  ingressClass: alb1
+---
+apiVersion: networking.olm.openshift.io/v1alpha1
+kind: AWSLoadBalancerController
+metadata:
+  name: alb2
+spec:
+  credentials:
+    name: aws-load-balancer-operator
+  ingressClass: alb2

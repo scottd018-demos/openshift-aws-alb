@@ -17,10 +17,16 @@ namespace-openshift:
 	oc new-project aws-load-balancer-operator
 
 secret-openshift:
-	openshift/create-secret.sh
+	kube/create-secret.sh
 
 operator-openshift:
-	oc apply -f openshift/operator.yaml
+	oc apply -f kube/operator.yaml
 
 controller-openshift:
-	oc apply -f openshift/controller.yaml
+	oc apply -f kube/controller.yaml
+
+routers-openshift:
+	oc apply -f kube/routers.yaml	
+
+demo-openshift:
+	oc apply -f kube/demo.yaml	
