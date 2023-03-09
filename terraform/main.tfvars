@@ -1,5 +1,5 @@
-vpc_id             = "vpc-07b4e2a8f9304b70e"
-public_subnet_ids  = ["subnet-050664459d4dd3f38", "subnet-0a7b1cbf8ecaed3c8", "subnet-0dccef4ab3dcf4414"]
-private_subnet_ids = ["subnet-0da64d8f8ba3ef91f", "subnet-09d5c26d08cbae121", "subnet-07be17311f023d764"]
-cluster_name       = "poc-dscott"
-oidc_url           = "https://dvbwgdztaeq9o.cloudfront.net/227p91p9um5ud2f4664gchfb5qse636a"
+vpc_id             = "vpc-0c7d8e74475ac49a5"
+public_subnet_ids  = ["subnet-0719e0747148b2a23", "subnet-0a08a9ce0768cea6d", "subnet-02e94569c9bc2225f"]
+private_subnet_ids = ["subnet-08bd44488ba42602f", "subnet-086f10864ac65ddb8", "subnet-0a0259e7740655d9a"]
+cluster_name       = "dscott"
+oidc_url           = "https://dvbwgdztaeq9o.cloudfront.net/22bp8dojp449gpfa00csi4npb79p8rou"

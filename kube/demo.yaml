@@ -37,30 +37,70 @@ metadata:
   name: echo-service
   namespace: app1
 spec:
+  type: NodePort
   ports:
     - name: http-port
       port: 80
       targetPort: http-port
       protocol: TCP
+      nodePort: 30008
   selector:
     app: echo-server
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: echo-service
+#   namespace: app1
+# spec:
+#   ports:
+#     - name: http-port
+#       port: 80
+#       targetPort: http-port
+#       protocol: TCP
+#   selector:
+#     app: echo-server
 ---
-apiVersion: route.openshift.io/v1
-kind: Route
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   labels:
     app: echoserver
   name: echo-service
   namespace: app1
+  annotations:
+    alb.ingress.kubernetes.io/scheme: 'internet-facing'
+    alb.ingress.kubernetes.io/target-type: 'instance'
 spec:
-  host: apps.dscott.d2do.p1.openshiftapps.com
-  path: /
-  port:
-    targetPort: 80
-  to:
-    kind: Service
-    name: echo-service
-    weight: 100
+  ingressClassName: alb
+  rules:
+    - host: app.apps.dscott.sugn.p1.openshiftapps.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: echo-service
+                port:
+                  number: 80
+            path: /
+            pathType: Exact
+# ---
+# apiVersion: route.openshift.io/v1
+# kind: Route
+# metadata:
+#   labels:
+#     app: echoserver
+#   name: echo-service
+#   namespace: app1
+# spec:
+#   host: apps.dscott.d2do.p1.openshiftapps.com
+#   path: /
+#   port:
+#     targetPort: 80
+#   to:
+#     kind: Service
+#     name: echo-service
+#     weight: 100
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -90,27 +130,67 @@ metadata:
   name: echo-service
   namespace: app2
 spec:
+  type: NodePort
   ports:
     - name: http-port
       port: 80
       targetPort: http-port
       protocol: TCP
+      nodePort: 30007
   selector:
     app: echo-server
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: echo-service
+#   namespace: app2
+# spec:
+#   ports:
+#     - name: http-port
+#       port: 80
+#       targetPort: http-port
+#       protocol: TCP
+#   selector:
+#     app: echo-server
+# ---
+# apiVersion: route.openshift.io/v1
+# kind: Route
+# metadata:
+#   labels:
+#     app: echoserver
+#   name: echo-service
+#   namespace: app2
+# spec:
+#   host: apps.dscott.d2do.p1.openshiftapps.com
+#   path: /
+#   port:
+#     targetPort: 80
+#   to:
+#     kind: Service
+#     name: echo-service
+#     weight: 100
 ---
-apiVersion: route.openshift.io/v1
-kind: Route
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   labels:
     app: echoserver
   name: echo-service
   namespace: app2
+  annotations:
+    alb.ingress.kubernetes.io/scheme: 'internet-facing'
+    alb.ingress.kubernetes.io/target-type: 'instance'
 spec:
-  host: apps.dscott.d2do.p1.openshiftapps.com
-  path: /
-  port:
-    targetPort: 80
-  to:
-    kind: Service
-    name: echo-service
-    weight: 100
+  ingressClassName: alb
+  rules:
+    - host: app.apps.dscott.sugn.p1.openshiftapps.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: echo-service
+                port:
+                  number: 80
+            path: /
+            pathType: Exact
