@@ -2,18 +2,18 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: app1
+  name: dscott-app1
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: app2
+  name: dscott-app2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: echo-deployment
-  namespace: app1
+  namespace: dscott-app1
 spec:
   replicas: 1
   selector:
@@ -35,7 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: echo-service
-  namespace: app1
+  namespace: dscott-app1
 spec:
   ports:
     - name: http-port
@@ -51,14 +51,11 @@ metadata:
   labels:
     app: echoserver
   name: echo-service
-  namespace: app1
-  annotations:
-    alb.ingress.kubernetes.io/scheme: 'internet-facing'
-    alb.ingress.kubernetes.io/target-type: 'ip'
+  namespace: dscott-app1
 spec:
-  ingressClassName: alb-ip
+  ingressClassName: nginx-main
   rules:
-    - host: app.apps.dscott.sugn.p1.openshiftapps.com
+    - host: test.mydomain.com
       http:
         paths:
           - backend:
@@ -73,7 +70,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: echo-deployment
-  namespace: app2
+  namespace: dscott-app2
 spec:
   replicas: 1
   selector:
@@ -95,7 +92,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: echo-service
-  namespace: app2
+  namespace: dscott-app2
 spec:
   ports:
     - name: http-port
@@ -111,14 +108,11 @@ metadata:
   labels:
     app: echoserver
   name: echo-service
-  namespace: app2
-  annotations:
-    alb.ingress.kubernetes.io/scheme: 'internet-facing'
-    alb.ingress.kubernetes.io/target-type: 'ip'
+  namespace: dscott-app2
 spec:
-  ingressClassName: alb-ip
+  ingressClassName: nginx-canary
   rules:
-    - host: app.apps.dscott.sugn.p1.openshiftapps.com
+    - host: test.mydomain.com
       http:
         paths:
           - backend:

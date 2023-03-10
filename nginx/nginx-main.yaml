@@ -1,0 +1,3 @@
+controller:
+  ingressClass: nginx-main
+  watchNamespace: dscott-app1

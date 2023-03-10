@@ -1,0 +1,3 @@
+controller:
+  ingressClass: nginx-canary
+  watchNamespace: dscott-app2
